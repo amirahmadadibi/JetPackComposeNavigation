@@ -26,11 +26,12 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(modifier: Modifier = Modifier) {
+fun MainScreen(navController:NavController) {
 
     var username by remember {
         mutableStateOf("")
@@ -87,7 +88,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
                     .height(50.dp),
                 shape = RoundedCornerShape(5.dp),
                 onClick = {
-
+                    navController.navigate("InformationScreen")
                 }) {
                 Text(text = "Register", fontSize = 20.sp)
             }

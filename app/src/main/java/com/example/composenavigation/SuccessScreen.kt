@@ -1,5 +1,6 @@
 package com.example.composenavigation
 
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,15 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InformationScreen(navController: NavController) {
+fun SuccessScreen(modifier: Modifier = Modifier) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text("Information Screen") },
+                title = { Text("Success Screen") },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = Color.Black,
                     titleContentColor = Color.White
@@ -41,24 +41,7 @@ fun InformationScreen(navController: NavController) {
             .padding(20.dp)
             .fillMaxSize(),
             verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(text = "username", fontSize = 30.sp)
-            Spacer(modifier = Modifier.height(20.dp))
-            Text(text = "family", fontSize = 30.sp)
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Text(text = "id", fontSize = 30.sp)
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(50.dp),
-                shape = RoundedCornerShape(5.dp),
-                onClick = {
-                    navController.navigate("SuccessScreen")
-                }) {
-                Text(text = "Verify Data", fontSize = 20.sp)
-            }
+            Text(text = "You have submitted your data.", fontSize = 30.sp)
         }
     }
 }

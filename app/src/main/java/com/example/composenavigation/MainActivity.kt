@@ -36,11 +36,15 @@ fun MyNavigations(modifier: Modifier = Modifier) {
     
     NavHost(navController = navController, startDestination = "MainScreen" ){
         composable(route = "MainScreen"){
-            MainScreen()
+            MainScreen(navController)
         }
 
         composable(route = "InformationScreen"){
-            InformationScreen()
+            InformationScreen(navController)
+        }
+
+        composable(route = "SuccessScreen"){
+            SuccessScreen()
         }
     }
 }
