@@ -72,14 +72,14 @@ fun MainScreen(modifier: Modifier = Modifier) {
             TextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = family,
-                label = { Text(text = "username") },
-                onValueChange = { username = it })
+                label = { Text(text = "family") },
+                onValueChange = { family = it })
             Spacer(modifier = Modifier.height(20.dp))
             TextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = ID,
-                label = { Text(text = "username") },
-                onValueChange = { username = it })
+                label = { Text(text = "Id") },
+                onValueChange = { ID = it })
             Spacer(modifier = Modifier.height(20.dp))
             Button(
                 modifier = Modifier

@@ -15,6 +15,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.composenavigation.ui.theme.ComposeNavigationTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,8 +25,22 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            MainScreen()
+           MyNavigations()
         }
     }
 }
 
+@Composable
+fun MyNavigations(modifier: Modifier = Modifier) {
+    val navController = rememberNavController()
+    
+    NavHost(navController = navController, startDestination = "MainScreen" ){
+        composable(route = "MainScreen"){
+            MainScreen()
+        }
+
+        composable(route = "InformationScreen"){
+            InformationScreen()
+        }
+    }
+}
