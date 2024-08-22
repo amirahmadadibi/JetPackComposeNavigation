@@ -31,7 +31,7 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(navController:NavController) {
+fun MainScreen(navController: NavController) {
 
     var username by remember {
         mutableStateOf("")
@@ -88,7 +88,7 @@ fun MainScreen(navController:NavController) {
                     .height(50.dp),
                 shape = RoundedCornerShape(5.dp),
                 onClick = {
-                    navController.navigate("InformationScreen")
+                    navController.navigate("InformationScreen/${username}/${family}/${ID}")
                 }) {
                 Text(text = "Register", fontSize = 20.sp)
             }

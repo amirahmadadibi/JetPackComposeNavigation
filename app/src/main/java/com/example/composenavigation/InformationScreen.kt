@@ -28,7 +28,7 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InformationScreen(navController: NavController) {
+fun InformationScreen(navController: NavController, username: String, family: String, id: String) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -56,12 +56,12 @@ fun InformationScreen(navController: NavController) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "username", fontSize = 30.sp)
+            Text(text = username, fontSize = 30.sp)
             Spacer(modifier = Modifier.height(20.dp))
-            Text(text = "family", fontSize = 30.sp)
+            Text(text = family, fontSize = 30.sp)
             Spacer(modifier = Modifier.height(20.dp))
 
-            Text(text = "id", fontSize = 30.sp)
+            Text(text = id, fontSize = 30.sp)
             Spacer(modifier = Modifier.height(20.dp))
 
             Button(
@@ -70,7 +70,9 @@ fun InformationScreen(navController: NavController) {
                     .height(50.dp),
                 shape = RoundedCornerShape(5.dp),
                 onClick = {
-                    navController.navigate("SuccessScreen")
+                    navController.navigate("SuccessScreen"){
+                        popUpTo("MainScreen"){inclusive = true}
+                    }
                 }) {
                 Text(text = "Verify Data", fontSize = 20.sp)
             }

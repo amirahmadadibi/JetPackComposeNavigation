@@ -15,9 +15,11 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.composenavigation.ui.theme.ComposeNavigationTheme
 
 class MainActivity : ComponentActivity() {
@@ -25,7 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-           MyNavigations()
+            MyNavigations()
         }
     }
 }
@@ -33,17 +35,24 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyNavigations(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
-    
-    NavHost(navController = navController, startDestination = "MainScreen" ){
-        composable(route = "MainScreen"){
+
+    NavHost(navController = navController, startDestination = "MainScreen") {
+        composable(route = "MainScreen") {
             MainScreen(navController)
         }
 
-        composable(route = "InformationScreen"){
-            InformationScreen(navController)
+        composable(route = "InformationScreen/{username}/{family}/{ID}", arguments = listOf(
+            navArgument("username") { type = NavType.StringType },
+            navArgument("family") { type = NavType.StringType },
+            navArgument("ID") { type = NavType.StringType }
+        )) { navStackEntry ->
+            val username = navStackEntry.arguments?.getString("username")
+            val family = navStackEntry.arguments?.getString("family")
+            val ID = navStackEntry.arguments?.getString("ID")
+            InformationScreen(navController,username!!,family!!,ID!!)
         }
 
-        composable(route = "SuccessScreen"){
+        composable(route = "SuccessScreen") {
             SuccessScreen(navController)
         }
     }
