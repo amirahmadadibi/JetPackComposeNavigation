@@ -44,7 +44,7 @@ fun MyNavigations(modifier: Modifier = Modifier) {
         }
 
         composable(route = "SuccessScreen"){
-            SuccessScreen()
+            SuccessScreen(navController)
         }
     }
 }
